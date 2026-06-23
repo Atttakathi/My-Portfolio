@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Senthil G - Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #2563eb;
+            --secondary-color: #1e40af;
+            --text-dark: #1f2937;
+            --text-light: #6b7280;
+            --bg-light: #f9fafb;
+            --border-color: #e5e7eb;
+            --white: #ffffff;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--bg-light);
+        }
+
+        /* Navigation */
+        nav {
+            background-color: var(--white);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            z-index: 100;
+        }
+
+        nav .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: var(--white);
+            padding: 6rem 0;
+            margin-top: 0;
+        }
+
+        .hero .container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .hero-content h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .hero-content p {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            opacity: 0.95;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .btn {
+            padding: 0.75rem 2rem;
+            border-radius: 0.5rem;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background-color: var(--white);
+            color: var(--primary-color);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--white);
+            border: 2px solid var(--white);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--white);
+            color: var(--primary-color);
+        }
+
+        .hero-image {
+            text-align: center;
+        }
+
+        .hero-image img {
+            width: 250px;
+            height: 250px;
+            border-radius: 1rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Section Styling */
+        section {
+            padding: 5rem 0;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: var(--text-dark);
+            text-align: center;
+        }
+
+        /* About Section */
+        .about {
+            background-color: var(--white);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-text p {
+            margin-bottom: 1rem;
+            color: var(--text-light);
+            line-height: 1.8;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .info-item {
+            padding: 1rem;
+            background-color: var(--bg-light);
+            border-radius: 0.5rem;
+        }
+
+        .info-item strong {
+            display: block;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Skills Section */
+        .skills {
+            background-color: var(--white);
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-card {
+            background: linear-gradient(135deg, var(--bg-light) 0%, var(--white) 100%);
+            padding: 2rem;
+            border-radius: 0.75rem;
+            border-left: 4px solid var(--primary-color);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .skill-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .skill-list {
+            list-style: none;
+        }
+
+        .skill-list li {
+            padding: 0.5rem 0;
+            color: var(--text-light);
+        }
+
+        .skill-list li:before {
+            content: "▸ ";
+            color: var(--primary-color);
+            margin-right: 0.5rem;
+        }
+
+        /* Projects Section */
+        .projects {
+            background-color: var(--bg-light);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background-color: var(--white);
+            border-radius: 0.75rem;
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15);
+        }
+
+        .project-header {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: var(--white);
+            padding: 2rem;
+        }
+
+        .project-header h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .tech-tag {
+            background-color: rgba(255, 255, 255, 0.2);
+            padding: 0.25rem 0.75rem;
+            border-radius: 2rem;
+            font-size: 0.85rem;
+        }
+
+        .project-body {
+            padding: 2rem;
+        }
+
+        .project-body p {
+            color: var(--text-light);
+            margin-bottom: 1rem;
+        }
+
+        /* Education Section */
+        .education {
+            background-color: var(--white);
+        }
+
+        .education-item {
+            padding: 2rem;
+            border-left: 4px solid var(--primary-color);
+            margin-bottom: 2rem;
+            background-color: var(--bg-light);
+            border-radius: 0.5rem;
+        }
+
+        .education-item h3 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .education-item .meta {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+        }
+
+        /* Certifications Section */
+        .certifications {
+            background-color: var(--bg-light);
+        }
+
+        .cert-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+
+        .cert-item {
+            background-color: var(--white);
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            text-align: center;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        .cert-item h4 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .cert-item p {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        /* Contact Section */
+        .contact {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: var(--white);
+            text-align: center;
+        }
+
+        .contact h2 {
+            color: var(--white);
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .contact-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .contact-item strong {
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-item a {
+            color: var(--white);
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+
+        .contact-item a:hover {
+            opacity: 0.8;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--text-dark);
+            color: var(--white);
+            text-align: center;
+            padding: 2rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav ul {
+                gap: 1rem;
+                font-size: 0.9rem;
+            }
+
+            .hero .container {
+                grid-template-columns: 1fr;
+                padding: 3rem 0;
+            }
+
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            h2 {
+                font-size: 2rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+
+            .contact-info {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <div class="logo">SG</div>
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Hi, I'm Senthil G</h1>
+                <p>Electronics & Communication Engineering graduate with a passion for building innovative solutions using AI, embedded systems, and web technologies.</p>
+                <div class="cta-buttons">
+                    <a href="#contact" class="btn btn-primary">Get In Touch</a>
+                    <a href="https://www.linkedin.com/in/senthil2004g/" class="btn btn-secondary" target="_blank">LinkedIn Profile</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="your-photo.jpg" alt="Senthil G">
+               
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2>About Me</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>I'm a dedicated engineering student based in Thanjavur, Tamil Nadu, with expertise in electronics, embedded systems, and software development. Currently in my final year at Arasu Engineering College, I'm eager to leverage my technical skills and problem-solving abilities in real-world applications.</p>
+                    <p>With a strong foundation in programming, IoT, and AI technologies, I'm seeking entry-level opportunities to contribute to innovative projects while continuing to learn and grow as a developer.</p>
+                    <p>My approach combines technical proficiency with effective communication and a keen interest in solving complex problems through technology.</p>
+                </div>
+                <div class="info-grid">
+                    <div class="info-item">
+                        <strong>📍 Location</strong>
+                        <span>Thanjavur, Tamil Nadu</span>
+                    </div>
+                    <div class="info-item">
+                        <strong>🎓 Education</strong>
+                        <span>B.E. ECE (2022-2026)</span>
+                    </div>
+                    <div class="info-item">
+                        <strong>📊 CGPA</strong>
+                        <span>7.95</span>
+                    </div>
+                    <div class="info-item">
+                        <strong>🎯 Focus</strong>
+                        <span>IoT & Embedded Systems</span><br>
+                        <span>Web Development</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="skills">
+        <div class="container">
+            <h2>Technical Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <h3>Programming Languages</h3>
+                    <ul class="skill-list">
+                        <li>Java (Basic)</li>
+                        <li>Python (Basic)</li>
+                    </ul>
+                </div>
+                <div class="skill-card">
+                    <h3>Web Technologies</h3>
+                    <ul class="skill-list">
+                        <li>HTML5</li>
+                        <li>CSS3</li>
+                        <li>JavaScript (Basic)</li>
+                    </ul>
+                </div>
+                <div class="skill-card">
+                    <h3>Development Tools</h3>
+                    <ul class="skill-list">
+                        <li>Git & GitHub</li>
+                        <li>VS Code</li>
+                        <li>MS Office Suite</li>
+                    </ul>
+                </div>
+                <div class="skill-card">
+                    <h3>Testing & QA</h3>
+                    <ul class="skill-list">
+                        <li>Selenium WebDriver</li>
+                        <li>Automation Testing</li>
+                    </ul>
+                </div>
+                <div class="skill-card">
+                    <h3>Networking</h3>
+                    <ul class="skill-list">
+                        <li>IP, LAN, TCP/UDP</li>
+                        <li>HTTP Protocol</li>
+                        <li>Network Configuration</li>
+                    </ul>
+                </div>
+                <div class="skill-card">
+                    <h3>Hardware & OS</h3>
+                    <ul class="skill-list">
+                        <li>BIOS Configuration</li>
+                        <li>Windows Troubleshooting</li>
+                        <li>PC Assembly</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <h2>Featured Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>Wildlife Intrusion Detection System</h3>
+                        <div class="project-tech">
+                            <span class="tech-tag">Edge AI</span>
+                            <span class="tech-tag">IoT</span>
+                        </div>
+                    </div>
+                    <div class="project-body">
+                        <p>Designed and developed a system to detect wildlife intrusion in rural and urban areas using advanced AI algorithms and IoT sensors for real-time monitoring and alerts.</p>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>Real-Time Classroom Surveillance</h3>
+                        <div class="project-tech">
+                            <span class="tech-tag">Arduino</span>
+                            <span class="tech-tag">Face Recognition</span>
+                            <span class="tech-tag">AI</span>
+                        </div>
+                    </div>
+                    <div class="project-body">
+                        <p>Implemented an AI-powered surveillance system using embedded edge computing and face recognition technology for intelligent classroom monitoring. Documented as IEEE research paper with 15+ pages.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" class="education">
+        <div class="container">
+            <h2>Education</h2>
+            <div class="education-item">
+                <h3>Bachelor of Engineering (B.E.)</h3>
+                <p>Electronics and Communication Engineering</p>
+                <div class="meta">
+                    <strong>Arasu Engineering College, Kumbakonam</strong><br>
+                    2022 - 2026 | CGPA: 7.95
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications Section -->
+    <section class="certifications">
+        <div class="container">
+            <h2>Certifications & Training</h2>
+            <div class="cert-list">
+                <div class="cert-item">
+                    <h4>IBM Placement Training</h4>
+                    <p>Professional development & career preparation</p>
+                </div>
+                <div class="cert-item">
+                    <h4>CISCO Certification</h4>
+                    <p>Network Essentials & Cybersecurity (Introduction)</p>
+                </div>
+                <div class="cert-item">
+                    <h4>Embedded Systems & IoT</h4>
+                    <p>Internship Certificate - 1 Month</p>
+                </div>
+                <div class="cert-item">
+                    <h4>PCB Design & Testing</h4>
+                    <p>Certificate - 3 Months</p>
+                </div>
+                <div class="cert-item">
+                    <h4>Typewriting English</h4>
+                    <p>Class "A" with Distinction</p>
+                </div>
+                <div class="cert-item">
+                    <h4>LIC Agent</h4>
+                    <p>Insurance Advisor - 2024 to Present</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2>Get In Touch</h2>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <strong>📧 Email</strong>
+                    <a href="mailto:Senthil2004G@gmail.com">Senthil2004G@gmail.com</a>
+                </div>
+                <div class="contact-item">
+                    <strong>📱 Phone</strong>
+                    <a href="tel:+917871171458">+91 7871 171 458</a>
+                </div>
+                <div class="contact-item">
+                    <strong>🔗 LinkedIn</strong>
+                    <a href="https://www.linkedin.com/in/senthil2004g/" target="_blank">LinkedIn Profile</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Senthil G. All rights reserved. | Built with HTML, CSS & JavaScript</p>
+    </footer>
+</body>
+</html>
